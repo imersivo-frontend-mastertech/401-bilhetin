@@ -1,0 +1,12 @@
+@import '../../styles.scss';
+
+footer{
+    position: absolute;
+    text-align: right;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 10px;
+    background-color: $azul;
+    color: white;
+    box-sizing: border-box;
+}
