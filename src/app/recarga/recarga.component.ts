@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recarga',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recarga.component.scss']
 })
 export class RecargaComponent implements OnInit {
+  numeroViagens;
+  valorViagem;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  avancar(){
+    //mudar de pagina passando os valores
+    let dados = {
+      viagens: this.numeroViagens,
+      valor: this.valorViagem
+    }
+
+    this.router.navigate(['/resultado', dados ]);
   }
 
 }

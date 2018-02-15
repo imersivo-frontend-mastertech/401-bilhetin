@@ -1,8 +1,8 @@
 <form>
   <h2>Recarga</h2>
   
-  <input type="text" placeholder="Valor Viagem">
-  <input type="text" placeholder="Número Viagens">
+  <input type="text" placeholder="Valor Viagem" [(ngModel)]="valorViagem" name="valor">
+  <input type="text" placeholder="Número Viagens" [(ngModel)]="numeroViagens" name="numero">
 
-  <button type="button" routerLink="/resultado">Avançar</button>
+  <button type="button" (click)="avancar()">Avançar</button>
 </form>
