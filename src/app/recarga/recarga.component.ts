@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DadosService } from '../dados.service';
 
 @Component({
   selector: 'app-recarga',
@@ -10,19 +11,19 @@ export class RecargaComponent implements OnInit {
   numeroViagens;
   valorViagem;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dados: DadosService) { }
 
   ngOnInit() {
   }
 
   avancar(){
-    //mudar de pagina passando os valores
-    let dados = {
-      viagens: this.numeroViagens,
-      valor: this.valorViagem
-    }
+    let novosDados = this.dados.ler();
+    novosDados.viagens = this.numeroViagens;
+    novosDados.valor = this.valorViagem;
 
-    this.router.navigate(['/resultado', dados ]);
+    this.dados.gravar(novosDados);
+
+    this.router.navigate(['/resultado']);
   }
 
 }

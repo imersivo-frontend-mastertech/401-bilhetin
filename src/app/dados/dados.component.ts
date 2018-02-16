@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DadosService } from '../dados.service';
 
 @Component({
   selector: 'app-dados',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dados.component.scss']
 })
 export class DadosComponent implements OnInit {
+  formulario = {};
 
-  constructor() { }
+  constructor(private roteador:Router, private dados: DadosService) { }
 
   ngOnInit() {
   }
 
+  avancar(){
+    this.dados.gravar(this.formulario);
+    this.roteador.navigate(['/recarga']);
+  }
 }

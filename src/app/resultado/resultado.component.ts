@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DadosService } from '../dados.service';
 
 @Component({
   selector: 'app-resultado',
@@ -7,14 +8,20 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./resultado.component.scss']
 })
 export class ResultadoComponent implements OnInit {
-  resultado = 0;
+  resultado = '0.00';
+  nome;
+  bilhete;
 
-  constructor(private rotaAtiva: ActivatedRoute) { }
+  constructor(private dados: DadosService) { }
 
   ngOnInit() {
-    this.rotaAtiva.params.subscribe((parametros) => {
-      this.resultado = parametros.valor * parametros.viagens;
-    });
+    let dadosDoServico = this.dados.ler();
+    
+    let operacao = dadosDoServico.viagens * dadosDoServico.valor;
+    this.resultado = operacao.toFixed(2).replace('.', ',');
+    
+    this.nome = dadosDoServico.nome;
+    this.bilhete = dadosDoServico.bilhete;
   }
 
 }

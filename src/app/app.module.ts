@@ -10,6 +10,7 @@ import { InfoComponent } from './info/info.component';
 import { DadosComponent } from './dados/dados.component';
 import { RecargaComponent } from './recarga/recarga.component';
 import { ResultadoComponent } from './resultado/resultado.component';
+import { DadosService } from './dados.service';
 
 const rotas:Routes = [
   {path: 'home', component: DadosComponent},
@@ -33,7 +34,9 @@ const rotas:Routes = [
     RouterModule.forRoot(rotas),
     FormsModule
   ],
-  providers: [],
+  providers: [
+    DadosService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
